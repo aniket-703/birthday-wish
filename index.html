@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Happy Birthday, My Love! ❤️</title>
+  <meta name="description" content="A special birthday surprise made with all my love.">
+
+  <!-- Google Fonts & Material Symbols -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <!-- Offline Tailwind Engine -->
+  <script src="js/tailwind.min.js"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#755a24",
+            "primary-container": "#c9a86a",
+            "on-primary": "#ffffff",
+            "on-primary-container": "#543d08",
+            "primary-fixed": "#ffdea4",
+            "secondary": "#8c4b56",
+            "secondary-container": "#fdabb7",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#ffd9dd",
+            "on-secondary-fixed": "#390915",
+            "tertiary": "#775273",
+            "tertiary-container": "#cb9fc3",
+            "background": "#fbf9f5",
+            "surface": "#fbf9f5",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f5f3ef",
+            "surface-container": "#efeeea",
+            "surface-container-high": "#eae8e4",
+            "surface-container-highest": "#e4e2de",
+            "on-surface": "#1b1c1a",
+            "on-surface-variant": "#4d463a",
+            "outline": "#7f7668",
+            "outline-variant": "#d0c5b5"
+          },
+          fontFamily: {
+            serif: ["Playfair Display", "Georgia", "serif"],
+            sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Theme Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+</head>
+<body class="bg-background font-sans text-on-surface antialiased min-h-screen relative selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+
+  <!-- Ambient Luminous Glow Orbs -->
+  <div class="glow-orb-primary"></div>
+  <div class="glow-orb-secondary"></div>
+  <div class="glow-orb-tertiary"></div>
+
+  <!-- Interactive Confetti Overlay Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Top Minimal Header (Clean, no buttons/music clutter) -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface/85 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm">
+    <div class="h-14 max-w-5xl mx-auto px-4 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-secondary text-lg">❤️</span>
+        <span class="font-serif text-base sm:text-lg font-bold text-on-surface">Happy Birthday</span>
+        <span class="text-secondary text-lg">❤️</span>
+      </div>
+
+      <button id="quick-confetti-btn" class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors shadow-sm" title="Shower Confetti" type="button">
+        <span class="material-symbols-outlined text-[18px]">celebration</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Content Wrapper -->
+  <main class="w-full pt-14">
+
+    <!-- =====================================================================
+         1. HERO SECTION (NO BUTTONS, PURE WISH, SIMPLE SCROLL OPTION)
+         ===================================================================== -->
+    <section id="hero" class="relative w-full px-4 pt-16 pb-20 min-h-[85vh] flex flex-col items-center justify-center text-center overflow-hidden">
+      
+      <!-- Romantic Festive Pill -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container shadow-sm border border-outline-variant/40 text-on-surface mb-6 backdrop-blur-md">
+        <span class="text-secondary">✨</span>
+        <span class="text-xs font-semibold tracking-wider text-on-surface-variant">Today is all about you</span>
+        <span class="text-secondary">✨</span>
+      </div>
+
+      <!-- Main Headline -->
+      <div class="max-w-3xl mx-auto">
+        <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl text-on-surface font-bold tracking-tight mb-5 leading-tight">
+          Happy Birthday, <br class="hidden sm:inline"/>
+          <span class="relative inline-block text-primary italic font-serif">
+            My Love!
+            <svg class="absolute -bottom-2 left-0 w-full h-3 text-primary-container/60 fill-none" preserveAspectRatio="none" viewBox="0 0 240 12">
+              <path d="M2 9.5C65 2.5 175 1.5 238 9.5" stroke="currentColor" stroke-linecap="round" stroke-width="3"></path>
+            </svg>
+          </span>
+          <span class="inline-block animate-pulse">❤️</span>
+        </h1>
+        <p class="text-base sm:text-lg md:text-xl text-on-surface-variant max-w-xl mx-auto leading-relaxed">
+          To the most special girl in my life. Today is all about celebrating you and the beautiful smile that brightens every single day of mine.
+        </p>
+      </div>
+
+      <!-- Simple Scroll Indicator (Fades out as soon as scroll starts) -->
+      <div id="scroll-prompt" class="scroll-indicator mt-14" title="Scroll down">
+        <span class="text-xs tracking-widest text-on-surface-variant font-medium uppercase">Scroll down</span>
+        <span class="material-symbols-outlined text-primary text-[24px] animate-bounce">keyboard_arrow_down</span>
+      </div>
+
+      <!-- Floating Balloons -->
+      <div class="hidden lg:block absolute left-12 top-28 pointer-events-none select-none animate-bounce" style="animation-duration: 6s;">
+        <div class="flex flex-col items-center">
+          <div class="w-11 h-14 rounded-full bg-secondary-container/70 border border-secondary-fixed shadow-md flex items-center justify-center backdrop-blur-sm">
+            <span class="text-xs">❤️</span>
+          </div>
+          <div class="w-0.5 h-10 bg-outline-variant/60"></div>
+        </div>
+      </div>
+      <div class="hidden lg:block absolute right-16 top-32 pointer-events-none select-none animate-bounce" style="animation-duration: 7s;">
+        <div class="flex flex-col items-center">
+          <div class="w-12 h-16 rounded-full bg-primary-container/60 border border-primary-fixed shadow-md flex items-center justify-center backdrop-blur-sm">
+            <span class="text-xs">🎂</span>
+          </div>
+          <div class="w-0.5 h-12 bg-outline-variant/60"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         2. WORDS FOR YOU (SIMPLE, SWEET, HEARTFELT MESSAGES)
+         ===================================================================== -->
+    <section id="quotes-section" class="w-full px-4 py-16 bg-surface-container-low/60 relative">
+      <div class="max-w-5xl mx-auto">
+        
+        <div class="text-center max-w-xl mx-auto mb-12">
+          <span class="text-secondary text-sm font-semibold uppercase tracking-wider">With All My Heart</span>
+          <h2 class="font-serif text-3xl md:text-4xl text-on-surface font-bold mt-1 mb-2">A Few Words for You ❤️</h2>
+          <p class="text-sm md:text-base text-on-surface-variant">
+            Just simple thoughts from my heart on your special day.
+          </p>
+        </div>
+
+        <!-- 5 Simple Loving Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Note 01 -->
+          <div class="quote-card rounded-2xl p-7 bg-surface-container-lowest/90 backdrop-blur-xl shadow-md border border-outline-variant/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl">✨</span>
+                <span class="text-xs uppercase tracking-wider text-outline font-semibold">Note 01</span>
+              </div>
+              <h3 class="font-serif text-lg font-bold text-on-surface mb-2">Your Smile</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed">
+                Your smile is my favorite thing in the whole world. It can turn any stressful day into happiness in just one second.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between text-xs text-primary font-medium">
+              <span>Always keep smiling</span>
+              <span>😊</span>
+            </div>
+          </div>
+
+          <!-- Note 02 -->
+          <div class="quote-card rounded-2xl p-7 bg-surface-container-lowest/90 backdrop-blur-xl shadow-md border border-outline-variant/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl">💖</span>
+                <span class="text-xs uppercase tracking-wider text-outline font-semibold">Note 02</span>
+              </div>
+              <h3 class="font-serif text-lg font-bold text-on-surface mb-2">Every Moment With You</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed">
+                Whether we are talking for hours or laughing over silly jokes, every single minute spent with you is a memory I cherish.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between text-xs text-secondary font-medium">
+              <span>My favorite person</span>
+              <span>🥰</span>
+            </div>
+          </div>
+
+          <!-- Note 03 -->
+          <div class="quote-card rounded-2xl p-7 bg-surface-container-lowest/90 backdrop-blur-xl shadow-md border border-outline-variant/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl">🏡</span>
+                <span class="text-xs uppercase tracking-wider text-outline font-semibold">Note 03</span>
+              </div>
+              <h3 class="font-serif text-lg font-bold text-on-surface mb-2">My Safe Place</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed">
+                Thank you for being my comfort, my peace, and the person who understands me like no one else ever could.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between text-xs text-tertiary font-medium">
+              <span>Forever grateful</span>
+              <span>🌸</span>
+            </div>
+          </div>
+
+          <!-- Note 04 -->
+          <div class="quote-card rounded-2xl p-7 bg-surface-container-lowest/90 backdrop-blur-xl shadow-md border border-outline-variant/30 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl">🌸</span>
+                <span class="text-xs uppercase tracking-wider text-outline font-semibold">Note 04</span>
+              </div>
+              <h3 class="font-serif text-lg font-bold text-on-surface mb-2">You Deserve Everything</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed">
+                I hope this year brings you all the dreams you wish for, endless laughter, and all the love you give so generously to others.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between text-xs text-primary font-medium">
+              <span>Always rooting for you</span>
+              <span>🌟</span>
+            </div>
+          </div>
+
+          <!-- Note 05 (Wider) -->
+          <div class="quote-card rounded-2xl p-7 bg-surface-container-lowest/90 backdrop-blur-xl shadow-md border border-outline-variant/30 flex flex-col justify-between md:col-span-2">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-2xl">♾️</span>
+                <span class="text-xs uppercase tracking-wider text-outline font-semibold">Note 05</span>
+              </div>
+              <h3 class="font-serif text-lg font-bold text-on-surface mb-2">Forever by Your Side</h3>
+              <p class="text-sm text-on-surface-variant leading-relaxed">
+                No matter where life takes us, I promise to always stand beside you, hold your hand, cheer you on, and love you more and more every single day.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-outline-variant/30 flex items-center justify-between text-xs text-secondary font-medium">
+              <span>With all my love</span>
+              <span>❤️</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         3. MAKE A WISH (CAKE WITH SIMPLE BUTTON BLOW - NO BREATH MIC)
+         ===================================================================== -->
+    <section id="cake-section" class="w-full px-4 py-20 relative overflow-hidden flex flex-col items-center justify-center text-center">
+      <div class="max-w-xl mx-auto mb-8">
+        <span class="text-primary text-xs font-semibold uppercase tracking-wider">Birthday Tradition</span>
+        <h2 class="font-serif text-3xl md:text-4xl text-on-surface font-bold mt-1 mb-2">Make a Wish 🎂</h2>
+        <p class="text-sm md:text-base text-on-surface-variant" id="cake-prompt-text">
+          Close your eyes, make a silent wish, and tap the button to blow the candles!
+        </p>
+      </div>
+
+      <!-- Modern Cake -->
+      <div class="relative w-full max-w-sm flex flex-col items-center cursor-pointer cake-stage" id="cake-stage" title="Tap candles or click button below to blow!">
+        <!-- Smoke container -->
+        <div class="hidden absolute -top-8 flex gap-6 pointer-events-none transition-opacity duration-700" id="candle-smoke">
+          <span class="w-2 h-6 bg-outline-variant/60 rounded-full blur-[1px] animate-pulse"></span>
+          <span class="w-2 h-8 bg-outline-variant/50 rounded-full blur-[1px] animate-pulse delay-100"></span>
+          <span class="w-2 h-5 bg-outline-variant/60 rounded-full blur-[1px] animate-pulse delay-200"></span>
+        </div>
+
+        <!-- 3 Lit Candles -->
+        <div class="flex items-end justify-center gap-6 z-10 -mb-1" id="candle-wrapper">
+          <!-- Candle 1 -->
+          <div class="flex flex-col items-center">
+            <div class="candle-flame flicker w-4 h-6 rounded-full bg-gradient-to-t from-primary to-primary-container shadow-[0_0_16px_rgba(201,168,106,0.9)]" id="flame-1"></div>
+            <div class="w-1 h-2 bg-on-surface-variant"></div>
+            <div class="w-3.5 h-10 rounded-t bg-secondary-fixed shadow-inner"></div>
+          </div>
+          <!-- Center Candle 2 (Taller) -->
+          <div class="flex flex-col items-center">
+            <div class="candle-flame flicker w-5 h-7 rounded-full bg-gradient-to-t from-primary to-primary-fixed shadow-[0_0_20px_rgba(201,168,106,1)]" id="flame-2"></div>
+            <div class="w-1 h-2.5 bg-on-surface-variant"></div>
+            <div class="w-4 h-14 rounded-t bg-primary-fixed shadow-inner"></div>
+          </div>
+          <!-- Candle 3 -->
+          <div class="flex flex-col items-center">
+            <div class="candle-flame flicker w-4 h-6 rounded-full bg-gradient-to-t from-primary to-primary-container shadow-[0_0_16px_rgba(201,168,106,0.9)]" id="flame-3"></div>
+            <div class="w-1 h-2 bg-on-surface-variant"></div>
+            <div class="w-3.5 h-10 rounded-t bg-tertiary-fixed shadow-inner"></div>
+          </div>
+        </div>
+
+        <!-- Cake Tier 1 (Top) -->
+        <div class="w-40 h-16 bg-surface-container rounded-t-xl relative overflow-hidden shadow-md flex items-center justify-center border-t border-outline-variant/30">
+          <div class="absolute inset-x-0 top-0 h-4 bg-primary-container/30 rounded-b-lg"></div>
+          <div class="w-full flex justify-around px-2">
+            <span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+            <span class="w-2 h-2 rounded-full bg-primary-container"></span>
+            <span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+            <span class="w-2 h-2 rounded-full bg-primary-container"></span>
+            <span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+          </div>
+        </div>
+
+        <!-- Cake Tier 2 (Bottom Base) -->
+        <div class="w-64 h-24 bg-surface-container-high rounded-t-2xl relative overflow-hidden shadow-lg flex items-center justify-center border-t border-outline-variant/40">
+          <div class="absolute inset-x-0 top-0 h-6 bg-secondary-fixed/50 rounded-b-xl"></div>
+          <div class="font-serif text-sm text-primary tracking-widest font-bold opacity-85 select-none">HAPPY BIRTHDAY</div>
+        </div>
+
+        <!-- Cake Stand -->
+        <div class="w-72 h-4 bg-surface-container-highest rounded-full shadow-md -mt-1 border border-outline-variant/40"></div>
+        <div class="w-24 h-6 bg-surface-container-highest rounded-b-lg shadow-sm border-b border-outline-variant/40"></div>
+      </div>
+
+      <!-- Post Blow-Out Wish Banner -->
+      <div class="opacity-0 max-h-0 overflow-hidden transition-all duration-500 ease-out mt-6" id="wish-banner">
+        <div class="px-6 py-3 rounded-full bg-secondary-fixed border border-secondary/40 text-on-secondary-fixed font-serif text-base shadow-md flex items-center gap-2">
+          <span>🎉</span>
+          <span>May all your birthday wishes come true!</span>
+          <span>🎉</span>
+        </div>
+      </div>
+
+      <!-- Simple Single Action Button -->
+      <div class="mt-8 flex flex-col items-center gap-2">
+        <button id="btn-blow-candles" class="btn-blow" type="button">
+          <span>Blow the Candles 🕯️</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         4. A GIFT FOR MY LOVE (REDESIGNED 3D GIFT BOX - CLICK THE BOX ONLY)
+         ===================================================================== -->
+    <section id="gift-section" class="w-full px-4 py-20 bg-surface-container-low/40 relative">
+      <div class="max-w-xl mx-auto flex flex-col items-center text-center">
+        
+        <div class="mb-6">
+          <h2 class="font-serif text-3xl md:text-4xl text-on-surface font-bold mb-2">A Gift for My Love 🎁</h2>
+          <p class="text-sm md:text-base text-on-surface-variant">
+            A special surprise has been prepared just for you.
+          </p>
+        </div>
+
+        <!-- Redesigned Luxury 3D Gift Box (She clicks directly on the box) -->
+        <div id="gift-box-trigger" class="gift-box-wrapper" title="Tap to open your gift!">
+          <div class="gift-box-stage">
+            <!-- Glow Aura -->
+            <div class="gift-halo"></div>
+
+            <!-- Sparkling Stars -->
+            <span class="gift-sparkle sparkle-1">✨</span>
+            <span class="gift-sparkle sparkle-2">💖</span>
+            <span class="gift-sparkle sparkle-3">⭐</span>
+
+            <!-- Box Lid -->
+            <div class="gift-lid">
+              <div class="ribbon-vertical"></div>
+              <div class="gift-lid-lip"></div>
+              <!-- Tied Satin Bow on Top -->
+              <div class="gift-bow">
+                <div class="bow-loop-left"></div>
+                <div class="bow-loop-right"></div>
+                <div class="bow-center"></div>
+              </div>
+            </div>
+
+            <!-- Box Cube -->
+            <div class="gift-cube">
+              <div class="ribbon-vertical"></div>
+              <div class="ribbon-horizontal"></div>
+            </div>
+          </div>
+
+          <div class="gift-tap-prompt">
+            <span>Tap the box to open</span>
+            <span>🎁</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         5. A STORY OF TWO SOULS (SURPRISE VIDEO PLAYER)
+         ===================================================================== -->
+    <section id="video-section" class="w-full px-4 py-16 flex flex-col items-center justify-center">
+      <div class="max-w-4xl w-full mx-auto">
+        
+        <div class="video-player-card">
+          <!-- Video Header with Fullscreen Button -->
+          <div class="video-player-header">
+            <div class="flex items-center gap-3">
+              <span class="text-xl">🎬</span>
+              <div>
+                <h3 class="font-serif text-lg sm:text-xl font-bold text-on-surface">A Story of Two Souls</h3>
+                <p class="text-xs text-on-surface-variant">A special surprise video just for you ❤️</p>
+              </div>
+            </div>
+
+            <button id="btn-fullscreen-toggle" class="btn-fullscreen" type="button" title="Watch in Fullscreen">
+              <span class="material-symbols-outlined text-[18px]">fullscreen</span>
+              <span class="hidden sm:inline">Fullscreen</span>
+            </button>
+          </div>
+
+          <!-- Video Player Container (Happy Birthday Love.mp4) -->
+          <div class="video-container" id="video-theater-wrapper">
+            <video id="video-html5" controls playsinline webkit-playsinline preload="metadata" class="w-full h-full object-contain">
+              <source src="assets/Happy Birthday Love.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+
+        <p class="text-center mt-8 font-serif text-2xl text-primary font-bold">
+          Happy Birthday once again, my love! ❤️✨
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       PAYMENT PRANK MODAL (WITH ONLY TWO BUTTONS)
+       ===================================================================== -->
+  <div class="modal-overlay" id="payment-modal">
+    <div class="prank-modal" id="prank-modal-card">
+      
+      <!-- STEP 1: INITIAL LOVE TAX POPUP (STRICTLY TWO BUTTONS) -->
+      <div id="prank-step-1">
+        <div class="prank-badge">👑 Official Birthday Love Tax 👑</div>
+        <h3 class="prank-title">Want to see your surprise video? 🎬</h3>
+        <p class="prank-text">
+          Pay the official Birthday Love Tax of <span class="highlight-amt">₹1000</span> on GPay to unlock your video! (it's a short video! 🥰)
+        </p>
+
+        <!-- STRICTLY TWO BUTTONS -->
+        <div class="prank-actions-area" id="prank-actions-area">
+          <!-- Button 1: Pay Rs 1000 Love Tax with GPay -->
+          <button id="btn-pay-gpay" class="btn-pay-confirm" type="button">
+            <span>Pay ₹1000 Love Tax with GPay 💖</span>
+          </button>
+
+          <!-- Button 2: Nope, I won't pay the tax (Runaway / Tease on mobile) -->
+          <button id="btn-runaway-no" class="btn-pay-reject" type="button">
+            Nope, I won't pay the tax 😜
+          </button>
+        </div>
+
+        <p class="prank-terms mt-4">
+          *100% of love tax proceeds directly fund your chocolates, momos & endless pampering! ❤️
+        </p>
+      </div>
+
+      <!-- STEP 2: 2-MINUTE PAYMENT COUNTDOWN (AUTO-PLAYS VIDEO ON TIMER COMPLETION) -->
+      <div id="prank-step-2" class="hidden">
+        <div class="prank-badge">⏳ 2-Minute Payment Verification ⏳</div>
+        <h3 class="prank-title">Complete Payment in GPay 📲</h3>
+        <p class="prank-text">
+          Please pay <span class="highlight-amt">₹1000</span> to <span class="font-bold text-primary">7006281212</span> on Google Pay.
+        </p>
+
+        <!-- 2-Minute Live Circular Countdown Timer -->
+        <div class="timer-countdown-box">
+          <div class="timer-circle-container">
+            <svg class="timer-svg" viewBox="0 0 100 100">
+              <circle class="timer-circle-bg" cx="50" cy="50" r="42"></circle>
+              <circle class="timer-circle-progress" id="timer-circle-progress" cx="50" cy="50" r="42"></circle>
+            </svg>
+            <div class="timer-digits-wrapper">
+              <div class="timer-digits" id="payment-timer-display">02:00</div>
+              <span class="timer-unit">REMAINING</span>
+            </div>
+          </div>
+
+          <p class="timer-caption-text" id="timer-caption-text">
+            Waiting for ₹1000 Love Tax... Your surprise video will play automatically when this timer ends! 🎬❤️
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-2 mt-3">
+          <button id="btn-confirm-paid" class="btn-pay-confirm w-full justify-center" type="button">
+            <span>I've Already Paid! Play Video Now ✨</span>
+          </button>
+          <button id="btn-reopen-gpay" class="text-xs text-primary font-semibold hover:underline py-1" type="button">
+            Did Google Pay not open? Tap here to reopen ↻
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       TEASING MOCK MODAL (APPEARS ON CLICK/TAP OF "NO" BUTTON)
+       ===================================================================== -->
+  <div class="modal-overlay" id="tease-modal">
+    <div class="tease-card" id="tease-card">
+      <div class="tease-emoji-bounce" id="tease-emoji">😜</div>
+      <span class="tease-badge">🚨 TAX EVASION ALERT! 🚨</span>
+      <h3 class="tease-title" id="tease-title">Arey! Did you really think you could avoid the Love Tax? 😂</h3>
+      <p class="tease-msg" id="tease-msg">
+        Caught you red-handed trying to dodge the tax! 📸 The 'No' button is 100% just for decoration!
+        This is a certified birthday prank, my queen — paying the love tax is strictly mandatory! 💸💖
+      </p>
+
+      <div class="tease-pun-box">
+        <span id="tease-pun-text">
+          "All ₹1000 love tax will strictly be invested in your chocolates, momos & unlimited forehead kisses! 🍫🍟💋"
+        </span>
+      </div>
+
+      <div class="tease-actions">
+        <button id="btn-tease-pay" class="btn-tease-pay" type="button">
+          Fine, I'll pay the love tax! 💖💸
+        </button>
+        <button id="btn-tease-retry" class="btn-tease-retry" type="button">
+          Try evading tax again 😜
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       PAYMENT VERIFICATION OVERLAY (CHECKS PAYMENT ONCE & SAVES STATUS)
+       ===================================================================== -->
+  <div class="modal-overlay" id="verification-modal">
+    <div class="verification-card">
+      <div class="verification-spinner"></div>
+      <h3 class="font-serif text-xl font-bold text-on-surface mb-2">Authenticating Transaction</h3>
+      <p class="text-sm text-on-surface-variant" id="verification-status-text">
+        Checking ₹1000 payment to 7006281212... 💳
+      </p>
+
+      <div class="verification-progress-bar">
+        <div class="verification-progress-fill" id="verification-progress-fill"></div>
+      </div>
+
+      <p class="text-xs text-outline mt-3">
+        Verifying with Google Pay • Verified Authentic
+      </p>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       FOOTER (ONLY: ❤️ Created with love ❤️)
+       ===================================================================== -->
+  <footer class="w-full py-8 mt-12 border-t border-outline-variant/30 text-center font-medium text-sm text-on-surface-variant leading-relaxed">
+    <p>❤️ Created with love ❤️</p>
+    <p class="text-xs text-primary font-serif font-bold tracking-wider mt-1">By Your Only One</p>
+  </footer>
+
+  <!-- Confetti Engine -->
+  <script src="js/confetti.min.js"></script>
+  <!-- Main Logic -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>
